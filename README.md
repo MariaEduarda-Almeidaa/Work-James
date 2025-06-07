@@ -1,10 +1,11 @@
-# Java CRUD API
+## Tecnologias utilizadas
+Java
+Spring Boot
+Maven
+Docker
+Swagger
 
-This project is a Spring Boot application that provides a RESTful API for performing CRUD (Create, Read, Update, Delete) operations on items. The API is documented using Swagger and can be run in a Docker container.
-
-## Project Structure
-
-```
+## Estrutura do projeto
 java-crud-api
 ├── src
 │   ├── main
@@ -31,60 +32,53 @@ java-crud-api
 ├── docker-compose.yml
 ├── pom.xml
 └── README.md
-```
 
-## Setup Instructions
+## Passos para roda o codigo
+1. **Clonar o repositório**
+git clone <repository-url>
+cd java-crud-api
 
-1. **Clone the repository:**
-   ```
-   git clone <repository-url>
-   cd java-crud-api
-   ```
+2. **Compilar o projeto**
+mvn clean install
 
-2. **Build the project:**
-   ```
-   mvn clean install
-   ```
+3. **Caso queira rodar a aplicacao nomal sem o docker**
+mvn spring-boot:run
 
-3. **Run the application using Docker:**
-   ```
-   docker-compose up
-   ```
+4. **Rodar com o docker**
+docker build -t java-crud-api .
 
-4. **Access the API:**
-   The API will be available at `http://localhost:8080/api/items`.
+docker run -p 8080:8080 java-crud-api
 
-5. **Swagger Documentation:**
-   The Swagger UI can be accessed at `http://localhost:8080/swagger-ui.html`.
+## Para acessar a API no navegador
+http://localhost:8080/swagger-ui.html
 
-## API Usage
+## Uso da API
 
 ### Endpoints
 
-- **Create Item**
-  - **POST** `/api/items`
-  - Request Body: JSON representation of the item.
+**Criar Item**
 
-- **Get All Items**
-  - **GET** `/api/items`
+`POST /api/items`  
+Corpo da requisição: representação JSON do item.
 
-- **Get Item by ID**
-  - **GET** `/api/items/{id}`
+**Listar Todos os Itens**
 
-- **Update Item**
-  - **PUT** `/api/items/{id}`
-  - Request Body: JSON representation of the updated item.
+`GET /api/items`
 
-- **Delete Item**
-  - **DELETE** `/api/items/{id}`
+**Buscar Item por ID**
 
-## Running Tests
+`GET /api/items/{id}`
 
-To run the tests, use the following command:
-```
-mvn test
-```
+**Atualizar Item**
 
-## License
+`PUT /api/items/{id}`  
+Corpo da requisição: representação JSON do item atualizado.
 
-This project is licensed under the MIT License.
+**Deletar Item**
+
+`DELETE /api/items/{id}`
+
+
+
+
+

@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class Item {
+public class Customer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,10 @@ public class Item {
     private String name;
     private String description;
 
-    public Item() {
+    public Customer() {
     }
 
-    public Item(String name, String description) {
+    public Customer(String name, String description) {
         this.name = name;
         this.description = description;
     }

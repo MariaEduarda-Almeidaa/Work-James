@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.Item;
-import com.example.demo.service.ItemService;
+import com.example.demo.model.Customer;
+import com.example.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,33 +10,33 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/items")
-public class ItemController {
+public class CustomerController {
 
     @Autowired
-    private ItemService itemService;
+    private CustomerService itemService;
 
     @PostMapping
-    public ResponseEntity<Item> createItem(@RequestBody Item item) {
-        Item createdItem = itemService.createItem(item);
+    public ResponseEntity<Customer> createItem(@RequestBody Customer item) {
+        Customer createdItem = itemService.createItem(item);
         return ResponseEntity.ok(createdItem);
     }
 
     @GetMapping
-    public ResponseEntity<List<Item>> getAllItems() {
-        List<Item> items = itemService.getAllItems();
+    public ResponseEntity<List<Customer>> getAllItems() {
+        List<Customer> items = itemService.getAllItems();
         return ResponseEntity.ok(items);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Item> getItemById(@PathVariable Long id) {
+    public ResponseEntity<Customer> getItemById(@PathVariable Long id) {
         return itemService.getItemById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Item> updateItem(@PathVariable Long id, @RequestBody Item item) {
-        Item updatedItem = itemService.updateItem(id, item);
+    public ResponseEntity<Customer> updateItem(@PathVariable Long id, @RequestBody Customer item) {
+        Customer updatedItem = itemService.updateItem(id, item);
         return ResponseEntity.ok(updatedItem);
     }
 

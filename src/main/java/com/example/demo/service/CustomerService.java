@@ -1,6 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.model.Item;
+import com.example.demo.model.Customer;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -8,34 +8,34 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ItemService {
+public class CustomerService {
 
-    private final List<Item> items = new ArrayList<>();
+    private final List<Customer> items = new ArrayList<>();
     private long currentId = 1;
 
-    public Item createItem(Item item) {
+    public Customer createItem(Customer item) {
         item.setId(currentId++);
         items.add(item);
         return item;
     }
 
-    public List<Item> getAllItems() {
+    public List<Customer> getAllItems() {
         return items;
     }
 
-    public Optional<Item> getItemById(long id) {
+    public Optional<Customer> getItemById(long id) {
         return items.stream().filter(item -> item.getId() == id).findFirst();
     }
 
-    public Item updateItem(long id, Item updatedItem) {
-        Item item = getItemById(id).orElseThrow(() -> new RuntimeException("Item not found"));
+    public Customer updateItem(long id, Customer updatedItem) {
+        Customer item = getItemById(id).orElseThrow(() -> new RuntimeException("Item not found"));
         item.setName(updatedItem.getName());
         item.setDescription(updatedItem.getDescription());
         return item;
     }
 
     public void deleteItem(long id) {
-        Item item = getItemById(id).orElseThrow(() -> new RuntimeException("Item not found"));
+        Customer item = getItemById(id).orElseThrow(() -> new RuntimeException("Item not found"));
         items.remove(item);
     }
 }
