@@ -1,27 +1,18 @@
 package com.example.demo.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Faz o ID ser auto-incrementado
     private Long id;
-    private String name;
-    private String description;
 
-    public Customer() {
-    }
+    private String nome;
+    private String email;
 
-    public Customer(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
+    // getters e setters
     public Long getId() {
         return id;
     }
@@ -30,19 +21,19 @@ public class Customer {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getDescription() {
-        return description;
+    public String getEmail() {
+        return email;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEmail(String email) {
+        this.email = email;
     }
 }

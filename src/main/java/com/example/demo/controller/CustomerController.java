@@ -9,40 +9,40 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/items")
+@RequestMapping("/api/customers")
 public class CustomerController {
 
     @Autowired
-    private CustomerService itemService;
+    private CustomerService customerService;
 
     @PostMapping
-    public ResponseEntity<Customer> createItem(@RequestBody Customer item) {
-        Customer createdItem = itemService.createItem(item);
-        return ResponseEntity.ok(createdItem);
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+        Customer createdCustomer = customerService.createCustomer(customer);
+        return ResponseEntity.ok(createdCustomer);
     }
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getAllItems() {
-        List<Customer> items = itemService.getAllItems();
-        return ResponseEntity.ok(items);
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+        List<Customer> customers = customerService.getAllCustomers();
+        return ResponseEntity.ok(customers);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getItemById(@PathVariable Long id) {
-        return itemService.getItemById(id)
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+        return customerService.getCustomerById(id)
                 .map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateItem(@PathVariable Long id, @RequestBody Customer item) {
-        Customer updatedItem = itemService.updateItem(id, item);
-        return ResponseEntity.ok(updatedItem);
+    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
+        Customer updatedCustomer = customerService.updateCustomer(id, customer);
+        return ResponseEntity.ok(updatedCustomer);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
-        itemService.deleteItem(id);
+    public ResponseEntity<Void> deleteCustomer(@PathVariable Long id) {
+        customerService.deleteCustomer(id);
         return ResponseEntity.noContent().build();
     }
 }

@@ -10,32 +10,32 @@ import java.util.Optional;
 @Service
 public class CustomerService {
 
-    private final List<Customer> items = new ArrayList<>();
+    private final List<Customer> customers = new ArrayList<>();
     private long currentId = 1;
 
-    public Customer createItem(Customer item) {
-        item.setId(currentId++);
-        items.add(item);
-        return item;
+    public Customer createCustomer(Customer customer) {
+        customer.setId(currentId++);
+        customers.add(customer);
+        return customer;
     }
 
-    public List<Customer> getAllItems() {
-        return items;
+    public List<Customer> getAllCustomers() {
+        return customers;
     }
 
-    public Optional<Customer> getItemById(long id) {
-        return items.stream().filter(item -> item.getId() == id).findFirst();
+    public Optional<Customer> getCustomerById(long id) {
+        return customers.stream().filter(c -> c.getId() == id).findFirst();
     }
 
-    public Customer updateItem(long id, Customer updatedItem) {
-        Customer item = getItemById(id).orElseThrow(() -> new RuntimeException("Item not found"));
-        item.setName(updatedItem.getName());
-        item.setDescription(updatedItem.getDescription());
-        return item;
+    public Customer updateCustomer(long id, Customer updatedCustomer) {
+        Customer customer = getCustomerById(id).orElseThrow(() -> new RuntimeException("Customer not found"));
+        customer.setNome(updatedCustomer.getNome());
+        customer.setEmail(updatedCustomer.getEmail());
+        return customer;
     }
 
-    public void deleteItem(long id) {
-        Customer item = getItemById(id).orElseThrow(() -> new RuntimeException("Item not found"));
-        items.remove(item);
+    public void deleteCustomer(long id) {
+        Customer customer = getCustomerById(id).orElseThrow(() -> new RuntimeException("Customer not found"));
+        customers.remove(customer);
     }
 }
