@@ -11,10 +11,10 @@ import java.util.Optional;
 public class CustomerService {
 
     private final List<Customer> customers = new ArrayList<>();
-    private long currentId = 1;
+    private long currentId = 1; 
 
     public Customer createCustomer(Customer customer) {
-        customer.setId(currentId++);
+        customer.setId(currentId++); 
         customers.add(customer);
         return customer;
     }
@@ -30,7 +30,7 @@ public class CustomerService {
     public Customer updateCustomer(long id, Customer updatedCustomer) {
         Customer customer = getCustomerById(id).orElseThrow(() -> new RuntimeException("Customer not found"));
         customer.setNome(updatedCustomer.getNome());
-        customer.setEmail(updatedCustomer.getEmail());
+        customer.setNumero(updatedCustomer.getNumero());  // Troquei aqui
         return customer;
     }
 

@@ -1,18 +1,20 @@
 package com.example.demo.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 
 @Entity
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // Faz o ID ser auto-incrementado
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY) 
     private Long id;
 
     private String nome;
-    private String email;
 
-    // getters e setters
+    private int numero;
+
     public Long getId() {
         return id;
     }
@@ -29,11 +31,11 @@ public class Customer {
         this.nome = nome;
     }
 
-    public String getEmail() {
-        return email;
+    public int getNumero() {
+        return numero;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setNumero(int numero) {
+        this.numero = numero;
     }
 }
